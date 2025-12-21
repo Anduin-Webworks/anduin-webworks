@@ -55,14 +55,14 @@ const Career = () => {
   return (
     <section id="career" className="py-24 px-4 bg-card/50">
       <div className="container mx-auto">
-        <h2 className="font-chakra text-4xl lg:text-5xl font-medium text-center mb-16 animate-slide-up">
-          Career
+        <h2 className="font-cinzel text-4xl lg:text-5xl font-bold text-center mb-16 animate-slide-up">
+          Our <span className="text-primary">Journey</span>
         </h2>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Experience */}
           <div className="animate-fade-in">
-            <h3 className="font-chakra text-2xl lg:text-3xl font-semibold text-center mb-8">
+            <h3 className="font-cinzel text-2xl lg:text-3xl font-semibold text-center mb-8">
               Experience
             </h3>
             <div className="space-y-8">
@@ -71,17 +71,17 @@ const Career = () => {
                   key={index}
                   className="text-center lg:text-left space-y-2 pb-6 border-b border-border last:border-b-0"
                 >
-                  <div className="text-accent text-xl lg:text-2xl font-medium tracking-wide">
+                  <div className="font-outfit text-primary text-xl lg:text-2xl font-medium tracking-wide">
                     {exp.company}{" "}
                     <span className="text-muted-foreground text-base">
                       ({exp.period})
                     </span>
                   </div>
                   {exp.role && (
-                    <p className="font-light text-lg">{exp.role}</p>
+                    <p className="font-outfit font-light text-lg">{exp.role}</p>
                   )}
                   {exp.roles && (
-                    <ul className="space-y-1">
+                    <ul className="font-outfit space-y-1">
                       {exp.roles.map((role, i) => (
                         <li key={i} className="font-light text-lg">
                           {role}
@@ -96,20 +96,20 @@ const Career = () => {
 
           {/* Certifications */}
           <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            <h3 className="font-chakra text-2xl lg:text-3xl font-semibold text-center mb-8">
+            <h3 className="font-cinzel text-2xl lg:text-3xl font-semibold text-center mb-8">
               Certifications
             </h3>
             <div className="space-y-6">
               {certifications.map((cert, index) => (
                 <div
                   key={index}
-                  className={`text-center p-4 rounded-lg transition-colors ${
+                  className={`text-center p-4 rounded-lg transition-colors font-outfit ${
                     cert.highlight
                       ? "bg-primary/10 border border-primary/30"
-                      : "hover:bg-muted/30"
+                      : "hover:bg-muted/10"
                   }`}
                 >
-                  <div className="text-accent text-xl lg:text-2xl font-medium mb-1">
+                  <div className="text-secondary text-xl lg:text-2xl font-medium mb-1">
                     {cert.name}
                   </div>
                   <a

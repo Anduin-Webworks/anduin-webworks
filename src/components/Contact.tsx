@@ -16,7 +16,7 @@ const Contact = () => {
     console.log("Form submitted:", formData);
     toast({
       title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon!",
+      description: "Thank you for reaching out. We'll get back to you soon!",
     });
     setFormData({ name: "", email: "", message: "" });
     setIsModalOpen(false);
@@ -25,11 +25,11 @@ const Contact = () => {
   return (
     <section id="contact" className="py-24 px-4 bg-card/50">
       <div className="container mx-auto max-w-2xl text-center">
-        <h2 className="font-chakra text-4xl lg:text-5xl font-medium mb-12 animate-slide-up">
-          Contact
+        <h2 className="font-cinzel text-4xl lg:text-5xl font-bold mb-12 animate-slide-up">
+          Get In <span className="text-primary">Touch</span>
         </h2>
 
-        <div className="space-y-4 text-lg lg:text-xl font-light animate-fade-in">
+        <div className="space-y-4 font-outfit text-lg lg:text-xl font-light animate-fade-in">
           <p className="flex items-center justify-center gap-3">
             <Phone className="w-5 h-5 text-primary" />
             WhatsApp:{" "}
@@ -37,7 +37,7 @@ const Contact = () => {
               href="https://api.whatsapp.com/send?phone=553195117017"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline hover:text-accent transition-colors"
+              className="underline hover:text-primary transition-colors"
             >
               +55 31 9511-7017
             </a>
@@ -53,7 +53,7 @@ const Contact = () => {
               href="https://www.linkedin.com/in/ofilipelima/"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline hover:text-accent transition-colors"
+              className="underline hover:text-primary transition-colors"
             >
               /in/ofilipelima/
             </a>
@@ -62,8 +62,8 @@ const Contact = () => {
 
         <button
           onClick={() => setIsModalOpen(true)}
-          className="mt-8 px-8 py-4 rounded-2xl font-medium text-lg text-foreground border border-border hover:border-primary hover:text-primary transition-all duration-300"
-          style={{ background: "var(--gradient-button)" }}
+          className="mt-8 px-8 py-4 rounded-xl font-outfit font-medium text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
+          style={{ background: "var(--gradient-cta)", color: "hsl(var(--background))" }}
         >
           <span className="flex items-center gap-2">
             <Send className="w-5 h-5" />
@@ -74,21 +74,21 @@ const Contact = () => {
 
       {/* Contact Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-card border border-border rounded-2xl p-6 w-full max-w-md shadow-xl animate-fade-in">
+        <div className="fixed inset-0 bg-foreground/20 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-background border border-border rounded-2xl p-6 w-full max-w-md shadow-xl animate-fade-in">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="font-chakra text-2xl font-semibold">
+              <h3 className="font-cinzel text-2xl font-semibold">
                 Send Message
               </h3>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="p-2 hover:bg-muted rounded-lg transition-colors"
+                className="p-2 hover:bg-card rounded-lg transition-colors"
               >
                 <X className="w-5 h-5 text-destructive" />
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4 font-outfit">
               <div>
                 <label className="block text-sm font-medium mb-1">Name</label>
                 <input
@@ -99,7 +99,7 @@ const Contact = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
-                  className="w-full px-4 py-3 bg-muted border border-border rounded-lg focus:outline-none focus:border-primary transition-colors"
+                  className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:border-primary transition-colors"
                 />
               </div>
 
@@ -113,7 +113,7 @@ const Contact = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
-                  className="w-full px-4 py-3 bg-muted border border-border rounded-lg focus:outline-none focus:border-primary transition-colors"
+                  className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:border-primary transition-colors"
                 />
               </div>
 
@@ -128,14 +128,14 @@ const Contact = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
                   }
-                  className="w-full px-4 py-3 bg-muted border border-border rounded-lg focus:outline-none focus:border-primary transition-colors resize-none"
+                  className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:border-primary transition-colors resize-none"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-4 rounded-xl font-medium text-lg text-foreground transition-all duration-300 hover:opacity-90"
-                style={{ background: "var(--gradient-button)" }}
+                className="w-full py-4 rounded-xl font-medium text-lg transition-all duration-300 hover:opacity-90"
+                style={{ background: "var(--gradient-button)", color: "hsl(var(--foreground))" }}
               >
                 Send
               </button>
