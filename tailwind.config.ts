@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        chakra: ["Chakra Petch", "sans-serif"],
-        oswald: ["Oswald", "sans-serif"],
+        cinzel: ["Cinzel Decorative", "serif"],
+        outfit: ["Outfit", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

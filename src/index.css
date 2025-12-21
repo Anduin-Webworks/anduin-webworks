@@ -2,61 +2,102 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Oswald:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Outfit:wght@200;300;400;500;600;700&display=swap');
 
 /* 
-  Filipe Lima Portfolio - Design System
-  Dark techy theme with warm coral accents
+  Anduin Webworks - Brand Design System
+  Elegant, warm earth tones with golden accents
+  
+  Primary Colors:
+  - White Shores: #F2F0E4 (background)
+  - Black Lord: #0D0D0D (text)
+  - Yellow Yolk: #F2C46D (highlights/buttons)
+  - Brown Dirt: #592B02 (secondary text/borders)
+  - Orange Strong: #F26835 (call-to-action)
+  
+  Support Colors:
+  - Sunset Gold: #FFC857
+  - Warm Coral: #FF6F61
+  - Burnt Sienna: #E97451
+  - Maroon: #800000
 */
 
 @layer base {
   :root {
-    /* Main backgrounds - Deep slate blue tones */
-    --background: 224 23% 18%;
-    --foreground: 28 60% 95%;
+    /* White Shores - Primary background */
+    --background: 48 33% 93%;
+    --foreground: 0 0% 5%;
     
-    /* Header/Card - Darker navy */
-    --card: 224 26% 14%;
-    --card-foreground: 28 60% 95%;
+    /* Slightly darker cream for cards */
+    --card: 45 30% 88%;
+    --card-foreground: 0 0% 5%;
     
-    --popover: 224 26% 14%;
-    --popover-foreground: 28 60% 95%;
+    --popover: 45 30% 88%;
+    --popover-foreground: 0 0% 5%;
     
-    /* Primary - Warm coral/peach accent */
-    --primary: 24 100% 70%;
-    --primary-foreground: 224 23% 18%;
+    /* Yellow Yolk - Primary accent */
+    --primary: 40 85% 69%;
+    --primary-foreground: 0 0% 5%;
     
-    /* Secondary - Muted cream */
-    --secondary: 40 35% 82%;
-    --secondary-foreground: 224 23% 18%;
+    /* Orange Strong - CTA */
+    --secondary: 17 88% 58%;
+    --secondary-foreground: 48 33% 93%;
     
-    /* Muted tones */
-    --muted: 224 20% 25%;
-    --muted-foreground: 28 30% 75%;
+    /* Brown Dirt - Muted elements */
+    --muted: 30 96% 18%;
+    --muted-foreground: 40 30% 60%;
     
-    /* Accent - Gold highlight */
-    --accent: 40 50% 80%;
-    --accent-foreground: 224 23% 18%;
+    /* Sunset Gold - Accent */
+    --accent: 42 100% 67%;
+    --accent-foreground: 0 0% 5%;
     
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 28 60% 95%;
+    --destructive: 0 100% 40%;
+    --destructive-foreground: 48 33% 93%;
     
-    --border: 224 20% 30%;
-    --input: 224 20% 25%;
-    --ring: 24 100% 70%;
+    /* Brown Dirt for borders */
+    --border: 30 60% 25%;
+    --input: 45 30% 85%;
+    --ring: 40 85% 69%;
     
     --radius: 0.5rem;
     
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(24 100% 70% / 0.15), hsl(270 40% 50% / 0.1));
-    --gradient-button: linear-gradient(217deg, hsl(270 30% 43%), transparent 70.71%),
-                       linear-gradient(127deg, hsl(24 85% 40%), transparent 70.71%),
-                       linear-gradient(336deg, hsl(224 33% 25%), transparent 70.71%);
-    --gradient-hover: linear-gradient(to bottom, transparent, hsl(24 100% 70% / 0.25));
+    --gradient-hero: linear-gradient(135deg, hsl(40 85% 69% / 0.1), hsl(17 88% 58% / 0.08));
+    --gradient-button: linear-gradient(135deg, hsl(40 85% 69%), hsl(42 100% 67%));
+    --gradient-cta: linear-gradient(135deg, hsl(17 88% 58%), hsl(15 70% 55%));
+    --gradient-hover: linear-gradient(to bottom, transparent, hsl(40 85% 69% / 0.15));
     
     /* Shadows */
-    --shadow-glow: 0 0 40px hsl(24 100% 70% / 0.2);
-    --shadow-card: 0 4px 20px hsl(224 30% 10% / 0.5);
+    --shadow-glow: 0 0 30px hsl(40 85% 69% / 0.3);
+    --shadow-card: 0 4px 20px hsl(0 0% 5% / 0.1);
+  }
+  
+  /* Dark mode - inverted with Black Lord background */
+  .dark {
+    --background: 0 0% 5%;
+    --foreground: 48 33% 93%;
+    
+    --card: 0 0% 8%;
+    --card-foreground: 48 33% 93%;
+    
+    --popover: 0 0% 8%;
+    --popover-foreground: 48 33% 93%;
+    
+    --primary: 40 85% 69%;
+    --primary-foreground: 0 0% 5%;
+    
+    --secondary: 17 88% 58%;
+    --secondary-foreground: 48 33% 93%;
+    
+    --muted: 0 0% 15%;
+    --muted-foreground: 45 20% 70%;
+    
+    --accent: 42 100% 67%;
+    --accent-foreground: 0 0% 5%;
+    
+    --border: 30 40% 20%;
+    --input: 0 0% 12%;
+    --ring: 40 85% 69%;
   }
 }
 
@@ -70,16 +111,16 @@
   }
 
   body {
-    @apply bg-background text-foreground font-oswald;
+    @apply bg-background text-foreground font-outfit;
   }
   
-  /* Custom scrollbar */
+  /* Custom scrollbar matching brand */
   ::-webkit-scrollbar {
     width: 10px;
   }
   
   ::-webkit-scrollbar-track {
-    background: hsl(var(--foreground));
+    background: hsl(var(--background));
   }
   
   ::-webkit-scrollbar-thumb {
@@ -88,13 +129,13 @@
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(24 60% 30%);
+    background: hsl(30 96% 18%);
   }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-secondary;
   }
   
   .animate-float {
@@ -111,6 +152,10 @@
   
   .animate-glow {
     animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 3s ease-in-out infinite;
   }
 }
 
@@ -147,9 +192,18 @@
 
 @keyframes glow {
   from {
-    text-shadow: 0 0 10px hsl(24 100% 70% / 0.5), 0 0 20px hsl(24 100% 70% / 0.3);
+    text-shadow: 0 0 10px hsl(40 85% 69% / 0.5), 0 0 20px hsl(40 85% 69% / 0.3);
   }
   to {
-    text-shadow: 0 0 20px hsl(24 100% 70% / 0.8), 0 0 40px hsl(24 100% 70% / 0.5);
+    text-shadow: 0 0 20px hsl(40 85% 69% / 0.8), 0 0 40px hsl(40 85% 69% / 0.5);
+  }
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
   }
 }

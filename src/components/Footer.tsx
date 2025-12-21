@@ -1,10 +1,20 @@
+import logoAW from "@/assets/logo-primary.png";
+
 const Footer = () => {
   return (
-    <footer className="py-4 bg-accent text-accent-foreground">
-      <div className="container mx-auto px-4 text-center">
-        <p className="font-oswald text-lg font-medium tracking-wide">
-          Developed by @oswaldovzki
-        </p>
+    <footer className="py-6 bg-primary text-primary-foreground">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <img src={logoAW} alt="Anduin Webworks" className="h-8 w-auto" />
+            <span className="font-cinzel text-lg font-bold">
+              Anduin Webworks
+            </span>
+          </div>
+          <p className="font-outfit text-sm font-medium tracking-wide text-center">
+            © {new Date().getFullYear()} Anduin Webworks. All rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );

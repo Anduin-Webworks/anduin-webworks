@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Home, User, Briefcase, FolderOpen, Mail } from "lucide-react";
+import logoAW from "@/assets/logo-primary.png";
 
 const navItems = [
   { name: "Home", href: "#home", icon: Home },
@@ -44,11 +45,12 @@ const Header = () => {
           {/* Desktop Logo */}
           <a
             href="#home"
-            className="hidden lg:flex items-center gap-3 text-xl font-chakra font-semibold tracking-wide hover:text-primary transition-colors"
+            className="hidden lg:flex items-center gap-3 hover:opacity-80 transition-opacity"
           >
-            <span className="text-primary">&lt;</span>
-            Filipe Lima
-            <span className="text-primary">/&gt;</span>
+            <img src={logoAW} alt="Anduin Webworks" className="h-12 w-auto" />
+            <span className="font-cinzel text-xl font-bold tracking-wide text-foreground">
+              Anduin <span className="text-primary">Webworks</span>
+            </span>
           </a>
 
           {/* Desktop Navigation */}
@@ -57,7 +59,7 @@ const Header = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="font-chakra text-lg tracking-wider text-foreground hover:text-primary border-b-2 border-transparent hover:border-primary pb-1 transition-all duration-300"
+                className="font-outfit text-lg tracking-wider text-foreground hover:text-primary border-b-2 border-transparent hover:border-primary pb-1 transition-all duration-300"
               >
                 {item.name}
               </a>
@@ -65,14 +67,13 @@ const Header = () => {
           </nav>
 
           {/* Title on desktop right side */}
-          <div className="hidden lg:flex items-center gap-2 font-chakra text-muted-foreground">
-            <span>IT Governance Specialist</span>
-            <Home className="w-5 h-5" />
+          <div className="hidden lg:flex items-center gap-2 font-outfit text-muted-foreground">
+            <span>Web Development Studio</span>
           </div>
 
           {/* Mobile: Title */}
-          <div className="lg:hidden font-chakra text-sm text-foreground">
-            Filipe Lima
+          <div className="lg:hidden font-cinzel text-sm font-bold text-foreground">
+            Anduin <span className="text-primary">Webworks</span>
           </div>
         </div>
 
@@ -88,7 +89,7 @@ const Header = () => {
                 key={item.name}
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}
-                className="flex items-center gap-3 py-3 px-4 font-chakra text-xl tracking-wider text-foreground hover:text-primary border-l-2 border-transparent hover:border-primary transition-all duration-300"
+                className="flex items-center gap-3 py-3 px-4 font-outfit text-xl tracking-wider text-foreground hover:text-primary border-l-2 border-transparent hover:border-primary transition-all duration-300"
               >
                 <item.icon className="w-5 h-5" />
                 {item.name}
