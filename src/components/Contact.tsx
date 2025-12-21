@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Phone, Mail, Linkedin, Send, X } from "lucide-react";
+import { Phone, Mail, Linkedin, Send, X, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -11,15 +13,33 @@ const Contact = () => {
   });
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. We'll get back to you soon!",
-    });
-    setFormData({ name: "", email: "", message: "" });
-    setIsModalOpen(false);
+    setIsSubmitting(true);
+    
+    try {
+      const { data, error } = await supabase.functions.invoke("send-contact-email", {
+        body: formData,
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. We'll get back to you soon!",
+      });
+      setFormData({ name: "", email: "", message: "" });
+      setIsModalOpen(false);
+    } catch (error: any) {
+      console.error("Error sending message:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -134,10 +154,18 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className="w-full py-4 rounded-xl font-medium text-lg transition-all duration-300 hover:opacity-90"
+                disabled={isSubmitting}
+                className="w-full py-4 rounded-xl font-medium text-lg transition-all duration-300 hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 style={{ background: "var(--gradient-button)", color: "hsl(var(--foreground))" }}
               >
-                Send
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  "Send"
+                )}
               </button>
             </form>
           </div>
