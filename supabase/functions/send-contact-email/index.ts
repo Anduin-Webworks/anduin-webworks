@@ -38,10 +38,11 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    // Send email to support
+    // Send email to support (using Resend account email for testing mode)
+    // Once you verify a custom domain, you can change this to any email address
     const emailResponse = await resend.emails.send({
       from: "Anduin Webworks <onboarding@resend.dev>",
-      to: ["support@anduin-webworks.atlassian.net"],
+      to: ["fpaixaol@gmail.com"],
       subject: `New Contact Form Submission from ${name}`,
       html: `
         <h2>New Contact Form Submission</h2>
