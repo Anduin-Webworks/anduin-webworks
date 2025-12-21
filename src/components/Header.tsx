@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Home, User, Briefcase, FolderOpen, Mail } from "lucide-react";
-import logoAW from "@/assets/logo-primary.png";
+import { useTheme } from "next-themes";
 import ThemeToggle from "./ThemeToggle";
 const navItems = [{
   name: "Home",
@@ -26,6 +26,13 @@ const navItems = [{
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -33,6 +40,9 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Use SVG logo which adapts to theme, fallback while mounting
+  const logoSrc = "/lovable-uploads/4af0b3bc-c9e1-47d5-a4aa-99e2adab4a3c.svg";
   return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-card/95 backdrop-blur-md shadow-lg" : "bg-card"}`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 lg:h-20">
@@ -43,7 +53,11 @@ const Header = () => {
 
           {/* Desktop Logo */}
           <a href="#home" className="hidden lg:flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <img alt="Anduin Webworks" className="h-12 w-auto" src="/lovable-uploads/4af0b3bc-c9e1-47d5-a4aa-99e2adab4a3c.svg" />
+            <img 
+              alt="Anduin Webworks" 
+              className="h-12 w-auto dark:brightness-0 dark:invert" 
+              src={logoSrc} 
+            />
             <span className="font-cinzel text-xl font-bold tracking-wide text-foreground">
               Anduin <span className="text-primary">Webworks</span>
             </span>
