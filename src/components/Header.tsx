@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Home, User, Briefcase, FolderOpen, Mail } from "lucide-react";
 import logoAW from "@/assets/logo-primary.png";
+import ThemeToggle from "./ThemeToggle";
 const navItems = [{
   name: "Home",
   href: "#home",
@@ -55,14 +56,18 @@ const Header = () => {
               </a>)}
           </nav>
 
-          {/* Title on desktop right side */}
-          <div className="hidden lg:flex items-center gap-2 font-outfit text-muted-foreground">
-            <span>Web Development Studio</span>
+          {/* Theme toggle and title on desktop right side */}
+          <div className="hidden lg:flex items-center gap-4">
+            <span className="font-outfit text-muted-foreground">Web Development Studio</span>
+            <ThemeToggle />
           </div>
 
-          {/* Mobile: Title */}
-          <div className="lg:hidden font-cinzel text-sm font-bold text-foreground">
-            Anduin <span className="text-primary">Webworks</span>
+          {/* Mobile: Title and Theme Toggle */}
+          <div className="lg:hidden flex items-center gap-2">
+            <span className="font-cinzel text-sm font-bold text-foreground">
+              Anduin <span className="text-primary">Webworks</span>
+            </span>
+            <ThemeToggle />
           </div>
         </div>
 
