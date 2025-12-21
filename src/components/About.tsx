@@ -79,7 +79,7 @@ const About = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`group flex flex-col items-center gap-2 transition-all duration-300`}
+                className={`group flex flex-col items-center gap-2 transition-all duration-300 w-20`}
                 aria-label={tab.label}
               >
                 <div
