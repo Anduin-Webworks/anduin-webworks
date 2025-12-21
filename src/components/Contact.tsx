@@ -64,7 +64,13 @@ const Contact = () => {
           </p>
           <p className="flex items-center justify-center gap-3">
             <Mail className="w-5 h-5 text-primary" />
-            Email: support@anduin-webworks.atlassian.net
+            Email:{" "}
+            <a
+              href="mailto:support@anduin-webworks.atlassian.net?subject=Hello%20from%20your%20website&body=Hi%2C%0A%0AI%20found%20your%20website%20and%20would%20like%20to%20get%20in%20touch.%0A%0A"
+              className="underline hover:text-primary transition-colors"
+            >
+              support@anduin-webworks.atlassian.net
+            </a>
           </p>
           <p className="flex items-center justify-center gap-3">
             <Linkedin className="w-5 h-5 text-primary" />
