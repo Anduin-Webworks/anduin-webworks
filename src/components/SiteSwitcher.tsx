@@ -43,7 +43,7 @@ const SiteSwitcher = ({ logoSrc }: SiteSwitcherProps) => {
         </span>
         <ChevronDown className="w-4 h-4 text-muted-foreground" />
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-56">
+      <DropdownMenuContent align="start" className="w-56 space-y-1">
         {sites.map((site) => (
           <DropdownMenuItem
             key={site.path}
