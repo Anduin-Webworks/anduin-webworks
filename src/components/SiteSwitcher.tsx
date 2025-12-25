@@ -49,7 +49,9 @@ const SiteSwitcher = ({ logoSrc }: SiteSwitcherProps) => {
             key={site.path}
             onClick={() => navigate(site.path)}
             className={`flex flex-col items-start gap-1 cursor-pointer ${
-              location.pathname === site.path ? "bg-accent" : ""
+              location.pathname === site.path 
+                ? "bg-primary/15 hover:bg-primary/25" 
+                : "hover:bg-accent"
             }`}
           >
             <span className="font-cinzel font-bold">
