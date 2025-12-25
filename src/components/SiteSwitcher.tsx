@@ -48,14 +48,14 @@ const SiteSwitcher = ({ logoSrc }: SiteSwitcherProps) => {
           <DropdownMenuItem
             key={site.path}
             onClick={() => navigate(site.path)}
-            className={`flex flex-col items-start gap-1 cursor-pointer ${
+            className={`group flex flex-col items-start gap-1 cursor-pointer ${
               location.pathname === site.path 
                 ? "bg-primary/15 hover:bg-primary/25" 
                 : "hover:bg-accent"
             }`}
           >
             <span className="font-cinzel font-bold">
-              Anduin <span className="text-primary">{site.name}</span>
+              Anduin <span className="text-primary group-hover:text-primary/70 transition-colors">{site.name}</span>
             </span>
             <span className="text-xs text-muted-foreground">{site.description}</span>
           </DropdownMenuItem>
