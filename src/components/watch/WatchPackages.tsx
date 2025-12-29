@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import ContactModal from "@/components/ContactModal";
 
 const packages = [
   {
@@ -40,6 +42,14 @@ const packages = [
 ];
 
 const WatchPackages = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<string>("");
+
+  const handleGetStarted = (planName: string) => {
+    setSelectedPlan(planName);
+    setIsModalOpen(true);
+  };
+
   return (
     <section className="py-16 md:py-24 px-6 bg-muted/30">
       <div className="max-w-5xl mx-auto">
@@ -90,6 +100,7 @@ const WatchPackages = () => {
                 <Button 
                   variant={pkg.popular ? "default" : "outline"} 
                   className="w-full"
+                  onClick={() => handleGetStarted(pkg.name)}
                 >
                   Get Started
                 </Button>
@@ -98,6 +109,12 @@ const WatchPackages = () => {
           ))}
         </div>
       </div>
+
+      <ContactModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        selectedPlan={selectedPlan}
+      />
     </section>
   );
 };
