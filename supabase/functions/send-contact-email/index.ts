@@ -53,6 +53,7 @@ interface ContactEmailRequest {
   name: string;
   email: string;
   message: string;
+  website?: string; // Honeypot field - should always be empty
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -90,9 +91,19 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { name, email, message }: ContactEmailRequest = await req.json();
+    const { name, email, message, website }: ContactEmailRequest = await req.json();
     
     console.log("Received contact form submission:", { name, email });
+
+    // Honeypot check - if the hidden field is filled, silently reject (it's a bot)
+    if (website && website.trim().length > 0) {
+      console.warn("Honeypot triggered - bot detected from IP:", clientIP);
+      // Return success to not reveal the honeypot to the bot
+      return new Response(JSON.stringify({ success: true }), {
+        status: 200,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      });
+    }
 
     // Validate required fields
     if (!name || !email || !message) {
