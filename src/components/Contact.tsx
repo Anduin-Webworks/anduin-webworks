@@ -11,6 +11,8 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  // Honeypot field - bots will fill this, humans won't see it
+  const [website, setWebsite] = useState("");
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -19,7 +21,7 @@ const Contact = () => {
     
     try {
       const { data, error } = await supabase.functions.invoke("send-contact-email", {
-        body: formData,
+        body: { ...formData, website },
       });
 
       if (error) throw error;
@@ -115,6 +117,20 @@ const Contact = () => {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4 font-outfit">
+              {/* Honeypot field - hidden from users, catches bots */}
+              <div className="absolute -left-[9999px] opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true">
+                <label htmlFor="contact-website">Website</label>
+                <input
+                  type="text"
+                  id="contact-website"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={website}
+                  onChange={(e) => setWebsite(e.target.value)}
+                />
+              </div>
+
               <div>
                 <label className="block text-sm font-medium mb-1">Name</label>
                 <input

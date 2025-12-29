@@ -17,6 +17,8 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }: ContactModalProps) => {
     email: "",
     message: "",
   });
+  // Honeypot field - bots will fill this, humans won't see it
+  const [website, setWebsite] = useState("");
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -30,7 +32,7 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }: ContactModalProps) => {
 
     try {
       const { data, error } = await supabase.functions.invoke("send-contact-email", {
-        body: { ...formData, message: messageWithPlan },
+        body: { ...formData, message: messageWithPlan, website },
       });
 
       if (error) throw error;
@@ -78,6 +80,20 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }: ContactModalProps) => {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4 font-outfit">
+          {/* Honeypot field - hidden from users, catches bots */}
+          <div className="absolute -left-[9999px] opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true">
+            <label htmlFor="website">Website</label>
+            <input
+              type="text"
+              id="website"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+            />
+          </div>
+
           <div>
             <label className="block text-sm font-medium mb-1">Name</label>
             <input
