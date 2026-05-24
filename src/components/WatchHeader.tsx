@@ -22,7 +22,7 @@ const WatchHeader = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const logoSrc = "/lovable-uploads/4af0b3bc-c9e1-47d5-a4aa-99e2adab4a3c.svg";
+  const logoSrc = "/uploads/4af0b3bc-c9e1-47d5-a4aa-99e2adab4a3c.svg";
 
   return (
     <header

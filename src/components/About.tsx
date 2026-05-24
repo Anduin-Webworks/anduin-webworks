@@ -47,7 +47,7 @@ const certifications = [
   {
     name: "Full Certification",
     link: "https://cursos.alura.com.br/user/oswaldovzki/fullCertificate/70c35dea02b345e12c388fc9730cc015",
-    provider: "🎓 Complete Certificate 🎓",
+    provider: "Complete front-end track",
     highlight: true,
   },
 ];
@@ -64,13 +64,15 @@ const About = () => {
   const [activeTab, setActiveTab] = useState<TabType>("about");
 
   return (
-    <section id="about" className="py-24 px-4">
+    <section id="about" className="py-24 px-4 bg-card/30">
       <div className="container mx-auto max-w-4xl">
-        <h2 className="font-cinzel text-4xl lg:text-5xl font-bold text-center mb-8 animate-slide-up">
+        <h2 className="font-cinzel text-4xl lg:text-5xl font-bold text-center mb-4 uppercase tracking-wide animate-slide-up">
           About <span className="text-primary">Us</span>
         </h2>
+        <p className="font-outfit text-center text-muted-foreground font-light mb-10 max-w-2xl mx-auto">
+          A solo studio with a company voice — technical craft meets governance discipline.
+        </p>
 
-        {/* Toggle Buttons */}
         <div className="flex justify-center gap-8 mb-12">
           {tabs.map((tab) => {
             const Icon = tab.icon;
@@ -79,14 +81,14 @@ const About = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`group flex flex-col items-center gap-2 transition-all duration-300 w-20`}
+                className="group flex flex-col items-center gap-2 transition-all duration-300 w-20"
                 aria-label={tab.label}
               >
                 <div
                   className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
                     isActive
                       ? "bg-primary text-primary-foreground shadow-lg scale-110"
-                      : "bg-muted text-muted-foreground hover:bg-primary/20 hover:text-primary"
+                      : "bg-muted/10 text-muted-foreground hover:bg-primary/20 hover:text-primary"
                   }`}
                 >
                   <Icon className="w-5 h-5" />
@@ -103,33 +105,32 @@ const About = () => {
           })}
         </div>
 
-        {/* Content */}
-        <div className="animate-fade-in" key={activeTab}>
+        <div className="animate-fade-in brand-accent" key={activeTab}>
           {activeTab === "about" && (
             <div className="space-y-6 font-outfit text-lg lg:text-xl font-light tracking-wide leading-relaxed">
               <p>
-                <strong className="text-primary font-medium">Anduin Webworks</strong> is a web development 
-                studio founded with a passion for creating beautiful, functional digital experiences.
+                <strong className="text-primary font-medium">Anduin Webworks</strong> started
+                as a front-end studio and grew into a broader practice: shipping digital
+                products, building game add-ons, and helping teams get governance right.
               </p>
 
               <p>
-                Our journey began with a unique background — combining expertise in 
-                <span className="text-secondary font-medium"> science education</span> with a transition 
-                into technology and IT governance. This blend gives us a distinctive perspective 
-                on problem-solving and user-centered design.
+                The thread through it all is clarity — whether that means a clean interface,
+                a reliable Android build, or an audit evidence trail that actually holds up.
               </p>
 
               <p>
-                With experience at companies like <span className="text-accent font-medium">Stilingue</span>, 
-                <span className="text-accent font-medium"> Blip</span>, and <span className="text-accent font-medium">Pismo</span>, 
-                we've honed skills in quality assurance, technical support, and IT governance — 
-                all of which inform our approach to web development.
+                Day job experience in IT governance at{" "}
+                <span className="text-accent font-medium">Pismo</span>, plus years in QA and
+                technical support at{" "}
+                <span className="text-accent font-medium">Stilingue</span> and{" "}
+                <span className="text-accent font-medium">Blip</span>, shapes how we build:
+                documented, testable, and ready for scrutiny.
               </p>
 
               <p>
-                Today, as an <span className="text-primary font-medium">IT Governance Specialist</span>, 
-                we apply knowledge in processes and data analysis to deliver websites that 
-                not only look great but also perform exceptionally well.
+                You work directly with the person doing the work — no hand-offs, no agency
+                overhead. Just focused delivery with room to grow as your needs expand.
               </p>
             </div>
           )}
