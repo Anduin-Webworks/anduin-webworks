@@ -35,20 +35,20 @@
     --popover: 45 30% 88%;
     --popover-foreground: 0 0% 5%;
     
-    /* Yellow Yolk - Primary accent */
-    --primary: 40 85% 69%;
-    --primary-foreground: 0 0% 5%;
+    /* Brown Dirt - Primary (readable on White Shores; dark mode keeps golden primary) */
+    --primary: 30 96% 18%;
+    --primary-foreground: 48 33% 93%;
     
     /* Orange Strong - CTA */
     --secondary: 17 88% 58%;
     --secondary-foreground: 48 33% 93%;
     
-    /* Brown Dirt - Muted elements */
-    --muted: 30 96% 18%;
-    --muted-foreground: 40 30% 60%;
+    /* Muted surfaces */
+    --muted: 45 25% 82%;
+    --muted-foreground: 30 40% 32%;
     
-    /* Sunset Gold - Accent */
-    --accent: 42 100% 67%;
+    /* Yellow Yolk - Decorative accent (headings, highlights) */
+    --accent: 40 70% 48%;
     --accent-foreground: 0 0% 5%;
     
     --destructive: 0 100% 40%;
@@ -57,18 +57,18 @@
     /* Brown Dirt for borders */
     --border: 30 60% 25%;
     --input: 45 30% 85%;
-    --ring: 40 85% 69%;
+    --ring: 30 70% 28%;
     
     --radius: 0.5rem;
     
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(40 85% 69% / 0.1), hsl(17 88% 58% / 0.08));
-    --gradient-button: linear-gradient(135deg, hsl(40 85% 69%), hsl(42 100% 67%));
+    --gradient-hero: linear-gradient(135deg, hsl(30 50% 22% / 0.06), hsl(17 88% 58% / 0.07));
+    --gradient-button: linear-gradient(135deg, hsl(30 70% 28%), hsl(17 75% 45%));
     --gradient-cta: linear-gradient(135deg, hsl(17 88% 58%), hsl(15 70% 55%));
-    --gradient-hover: linear-gradient(to bottom, transparent, hsl(40 85% 69% / 0.15));
+    --gradient-hover: linear-gradient(to bottom, transparent, hsl(30 50% 22% / 0.12));
     
     /* Shadows */
-    --shadow-glow: 0 0 30px hsl(40 85% 69% / 0.3);
+    --shadow-glow: 0 0 30px hsl(30 50% 22% / 0.2);
     --shadow-card: 0 4px 20px hsl(0 0% 5% / 0.1);
   }
   
@@ -134,6 +134,11 @@
 }
 
 @layer utilities {
+  /* Brand style guide: vertical accent beside body copy */
+  .brand-accent {
+    @apply border-l-4 border-foreground/80 pl-6;
+  }
+
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-secondary;
   }
@@ -192,10 +197,10 @@
 
 @keyframes glow {
   from {
-    text-shadow: 0 0 10px hsl(40 85% 69% / 0.5), 0 0 20px hsl(40 85% 69% / 0.3);
+    text-shadow: 0 0 10px hsl(17 88% 58% / 0.35), 0 0 20px hsl(17 88% 58% / 0.2);
   }
   to {
-    text-shadow: 0 0 20px hsl(40 85% 69% / 0.8), 0 0 40px hsl(40 85% 69% / 0.5);
+    text-shadow: 0 0 20px hsl(17 88% 58% / 0.55), 0 0 40px hsl(17 88% 58% / 0.35);
   }
 }
 

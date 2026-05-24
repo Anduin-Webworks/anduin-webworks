@@ -5,9 +5,9 @@ import SiteSwitcher from "./SiteSwitcher";
 
 const navItems = [
   { name: "Home", href: "#home", icon: Home },
+  { name: "Services", href: "#services", icon: Briefcase },
   { name: "About", href: "#about", icon: User },
-  { name: "Career", href: "#career", icon: Briefcase },
-  { name: "Projects", href: "#projects", icon: FolderOpen },
+  { name: "Work", href: "#work", icon: FolderOpen },
   { name: "Contact", href: "#contact", icon: Mail },
 ];
 
@@ -23,7 +23,7 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const logoSrc = "/lovable-uploads/4af0b3bc-c9e1-47d5-a4aa-99e2adab4a3c.svg";
+  const logoSrc = "/uploads/4af0b3bc-c9e1-47d5-a4aa-99e2adab4a3c.svg";
 
   return (
     <header
@@ -59,7 +59,9 @@ const Header = () => {
 
           {/* Theme toggle and title on desktop right side */}
           <div className="hidden lg:flex items-center gap-4">
-            <span className="font-outfit text-muted-foreground">Web Development Studio</span>
+            <span className="font-outfit text-muted-foreground text-sm tracking-wide">
+              Digital Studio &amp; Governance
+            </span>
             <ThemeToggle />
           </div>
 
