@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Home, User, Briefcase, FolderOpen, Mail } from "lucide-react";
+import { Menu, X, Home, User, Briefcase, FolderOpen, Mail, Palette } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import SiteSwitcher from "./SiteSwitcher";
 
 const navItems = [
-  { name: "Home", href: "#home", icon: Home },
-  { name: "Services", href: "#services", icon: Briefcase },
-  { name: "About", href: "#about", icon: User },
-  { name: "Work", href: "#work", icon: FolderOpen },
-  { name: "Contact", href: "#contact", icon: Mail },
+  { name: "Home", href: "/#home", icon: Home },
+  { name: "Services", href: "/#services", icon: Briefcase },
+  { name: "About", href: "/#about", icon: User },
+  { name: "Work", href: "/#work", icon: FolderOpen },
+  { name: "Brand", href: "/brand", icon: Palette },
+  { name: "Contact", href: "/#contact", icon: Mail },
 ];
 
 const Header = () => {
