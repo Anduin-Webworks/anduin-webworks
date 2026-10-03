@@ -326,7 +326,9 @@ const Projects = () => {
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary text-secondary-foreground font-outfit text-sm font-medium hover:opacity-90 transition-opacity"
                         >
-                          CurseForge
+                          {displayProject.url?.includes("curseforge.com")
+                            ? "CurseForge"
+                            : "Live Demo"}
                           <ExternalLink className="w-4 h-4" />
                         </a>
                       )}
