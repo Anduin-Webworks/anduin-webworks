@@ -6,6 +6,7 @@ import {
   Palette,
   Sparkles,
   Gamepad2,
+  Dumbbell,
   type LucideIcon,
 } from "lucide-react";
 
@@ -73,6 +74,16 @@ const projects: Project[] = [
       "Copy to clipboard when supported; prune old events with backup snapshot",
       "No HUD, no options panel — data ready for spreadsheets or pipelines",
     ],
+  },
+  {
+    id: "prax",
+    name: "PRAX",
+    icon: Dumbbell,
+    category: "web",
+    description:
+      "Offline-first gym companion: track loads, time your rests, and stay focused between sets. No ads, no data collection.",
+    tech: "React, TypeScript, PWA",
+    url: "https://prax-26.lovable.app/",
   },
   {
     id: "jsApps",
